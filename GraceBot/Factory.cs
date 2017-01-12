@@ -67,7 +67,7 @@ namespace GraceBot
 
         public IDbManager GetDbManager()
         {
-            return new DbManager(new Models.GraceBotContext());
+            return new DbManager(new Models.GraceBotContext("name=TestLocalContext"));
         }
 
         public async Task<T> GetUserDataPropertyAsync<T>(string property, Activity activity)
