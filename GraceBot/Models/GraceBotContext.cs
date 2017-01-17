@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using Microsoft.Bot.Connector;
 
 namespace GraceBot.Models
@@ -20,6 +21,11 @@ namespace GraceBot.Models
         public virtual DbSet<ActivityModel> Activities { get; set; }
         public virtual DbSet<ChannelAccount> ChannelAccounts { get; set; }
         public virtual DbSet<ConversationAccount> ConversationAccounts { get; set; }
+
+        internal void SaveChangesAysnc()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

@@ -38,20 +38,6 @@ namespace GraceBot.Tests
             mFactory.Verify(f => f.RespondAsync("Sorry, bad words detected, please try again.", _activity));
         }
 
-        [Test]
-        public async Task Db_ActivityIsAdded()
-        {
-            var mFactory = new Mock<IFactory>();
-            mFactory.Setup(f => f.GetUserDataPropertyAsync<bool>(It.IsAny<string>(), It.IsAny<Activity>())).Returns(Task.FromResult(false));
-            mFactory.Setup(f => f.GetActivityFilter()).Returns(new ActivityFilter(new string[] { }));
-            mFactory.Setup(f => f.GetActivityDefinition()).Returns(new ActivityDefinition(new Dictionary<string, string>() { { "test", "this is a test definition" } }));
-
-            _activity.Text = It.IsAny<string>();
-
-            var mDbManager = new Mock<IDbManager>();
-            Activity persistedActivity = null;
-        }
-
         /// <summary>
         /// The app should get an activity filter as soon as it is created so that this
         /// is not done every time a new request is received.
