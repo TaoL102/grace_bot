@@ -12,13 +12,14 @@ namespace GraceBot.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public GraceBotContext(string name) : base(name)
+        public GraceBotContext() : base("name=GraceBotContext")
         {
         }
+         
 
-        public System.Data.Entity.DbSet<ActivityModel> Activities { get; set; }
-        public System.Data.Entity.DbSet<ChannelAccount> ChannelAccounts { get; set; }
-        public System.Data.Entity.DbSet<ConversationAccount> ConversationAccounts { get; set; }
+        public virtual DbSet<ActivityModel> Activities { get; set; }
+        public virtual DbSet<ChannelAccount> ChannelAccounts { get; set; }
+        public virtual DbSet<ConversationAccount> ConversationAccounts { get; set; }
     }
 
 }

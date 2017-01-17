@@ -16,19 +16,12 @@ namespace GraceBot
         Task AddActivity(Activity activity, ProcessStatus processStatus = ProcessStatus.BotMessage);
 
         /// <summary>
-        /// Update an activity in database as an asynchronous operation given the activity.
-        /// </summary>
-        /// <param name="activity">The activity to be updated in database.</param>
-        /// <returns></returns>
-        Task UpdateActivity(Activity activity);
-
-        /// <summary>
         /// Update an activity in database as an asynchronous operation given the activity and its process status.
         /// </summary>
         /// <param name="activity">The activity to be updated in database.</param>
         /// <param name="processStatus">The process status of the activity.</param>
         /// <returns></returns>
-        Task UpdateActivity(Activity activity, ProcessStatus processStatus);
+        Task UpdateActivity(Activity activity, ProcessStatus? processStatus = null);
 
         /// <summary>
         /// Return a list of activities which stand for unprocessed questions.
