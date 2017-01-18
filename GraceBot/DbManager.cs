@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 using GraceBot.Models;
@@ -82,22 +81,14 @@ namespace GraceBot
 
             if (activityModel.Conversation != null)
             {
-                try
+                var conversationAccount = _db.ConversationAccounts.Find(activityModel.Conversation.Id);
+                if (conversationAccount != null)
                 {
-                    var conversationAccount = _db.ConversationAccounts.Find(activityModel.Conversation.Id);
-                    if (conversationAccount != null)
-                    {
-                        _db.ConversationAccounts.Attach(conversationAccount);
-                        activityModel.Conversation = conversationAccount;
-                    }
-                }
-                catch(Exception ex)
-                {
-                    var s = ex.Message;
+                    _db.ConversationAccounts.Attach(conversationAccount);
+                    activityModel.Conversation = conversationAccount;
                 }
             }
         }
-
 
         // Implement the method defined in IDbManager interface.
         // Return a list of activities in database (5 contiguous ones from the start) which stand for unprocessed questions.
